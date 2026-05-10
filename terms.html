@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="theme-color" content="#f2f4f6">
+    <title>서비스 이용약관 - My JDMS</title>
+    <script>
+(function(){
+'use strict';
+var ICONS = {
+'chevron-left':'<path d="m15 18-6-6 6-6" />',
+'file-text':'<path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z" /> <polyline points="14 2 14 8 20 8" /> <line x1="16" y1="13" x2="8" y2="13" /> <line x1="16" y1="17" x2="8" y2="17" /> <line x1="10" y1="9" x2="8" y2="9" />',
+'info':'<circle cx="12" cy="12" r="10" /> <path d="M12 16v-4" /> <path d="M12 8h.01" />'
+};
+function mountInlineLucideIcons(root) {
+  root = root || document;
+  var nodes = root.querySelectorAll("[data-lucide]");
+  for (var i = 0; i < nodes.length; i++) {
+    var el = nodes[i];
+    var name = el.getAttribute("data-lucide");
+    if (!name || !ICONS[name]) continue;
+    var svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    svg.setAttribute("xmlns", "http://www.w3.org/2000/svg");
+    svg.setAttribute("width", "24");
+    svg.setAttribute("height", "24");
+    svg.setAttribute("viewBox", "0 0 24 24");
+    svg.setAttribute("fill", "none");
+    svg.setAttribute("stroke", "currentColor");
+    svg.setAttribute("stroke-width", "2");
+    svg.setAttribute("stroke-linecap", "round");
+    svg.setAttribute("stroke-linejoin", "round");
+    var extraClass = el.getAttribute("class");
+    if (extraClass) extraClass = extraClass.replace(/^\s+|\s+$/g, "");
+    svg.setAttribute("class", "lucide lucide-" + name + " lucide-inline" + (extraClass ? " " + extraClass : ""));
+    svg.innerHTML = ICONS[name];
+    if (el.id) svg.id = el.id;
+    if (el.hasAttribute("style")) svg.setAttribute("style", el.getAttribute("style"));
+    var w = el.getAttribute("width"); var h = el.getAttribute("height");
+    if (w) svg.setAttribute("width", w);
+    if (h) svg.setAttribute("height", h);
+    el.parentNode.replaceChild(svg, el);
+  }
+}
+window.mountInlineLucideIcons = mountInlineLucideIcons;
+window.lucide = window.lucide || {};
+window.lucide.createIcons = function () { mountInlineLucideIcons(document); };
+})();
+    </script>
+    <style>
+        :root {
+            --sat: env(safe-area-inset-top, 0px);
+            --sab: env(safe-area-inset-bottom, 0px);
+            --text-main: #1f2328;
+            --text-sub: #636c76;
+            --bg: #ffffff;
+            --border: #d0d7de;
+            --important-border: #8250df;
+            --important-bg: #f6f8fa;
+        }
+
+        body.dark-mode {
+            --bg: #0d1117;
+            --text-main: #e6edf3;
+            --text-sub: #7d8590;
+            --border: #30363d;
+            --important-border: #bc8cff;
+            --important-bg: #161b22;
+        }
+
+        * {
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif;
+            background-color: var(--bg);
+            color: var(--text-main);
+            line-height: 1.5;
+            word-wrap: break-word;
+            padding-top: calc(var(--sat) + 20px);
+            padding-bottom: calc(var(--sab) + 40px);
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 32px;
+        }
+
+        @media (max-width: 767px) {
+            .container {
+                padding: 0 16px;
+            }
+        }
+
+        h1 {
+            font-size: 32px;
+            font-weight: 600;
+            margin-top: 0;
+            margin-bottom: 16px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        h2 {
+            font-size: 24px;
+            font-weight: 600;
+            margin-top: 24px;
+            margin-bottom: 16px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        p {
+            margin-top: 0;
+            margin-bottom: 16px;
+        }
+
+        ol, ul {
+            margin-top: 0;
+            margin-bottom: 16px;
+            padding-left: 2em;
+        }
+
+        li {
+            margin-top: 0.25em;
+        }
+
+        .important {
+            color: var(--important-border);
+            font-weight: 700;
+        }
+
+        footer {
+            margin-top: 40px;
+            padding-top: 16px;
+            border-top: 1px solid var(--border);
+            font-size: 12px;
+            color: var(--text-sub);
+            text-align: center;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 24px;
+            color: var(--text-sub);
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-link">← 돌아가기</a>
+        
+        <h1>
+            <i data-lucide="file-text" style="color: var(--important-border);"></i>
+            서비스 이용약관
+        </h1>
+        <p>최종 수정일: 2026년 5월 10일</p>
+
+        <h2>제 1 조 (목적)</h2>
+        <p>본 약관은 <strong>My JDMS</strong>(이하 "회사")가 제공하는 스마트 학교 서비스의 이용 조건 및 절차, 이용자와 회사 간의 권리, 의무 및 책임 사항을 규정함을 목적으로 합니다.</p>
+
+        <h2>제 2 조 (용어의 정의)</h2>
+        <ol>
+            <li>"서비스"란 회사가 제공하는 시간표, 급식 정보, 디지털 학생증 및 관련 부가 기능을 의미합니다.</li>
+            <li>"이용자"란 본 약관에 따라 회사가 제공하는 서비스를 이용하는 학생 및 교직원을 말합니다.</li>
+        </ol>
+
+        <h2>제 3 조 (약관의 효력 및 변경)</h2>
+        <p>본 약관은 서비스 화면에 게시함으로써 효력이 발생합니다. 회사는 학교 학사 일정이나 관련 법령의 변경에 따라 약관을 수정할 수 있습니다.</p>
+
+        <h2>제 4 조 (디지털 학생증 이용)</h2>
+        <p>이용자는 디지털 학생증 기능을 타인에게 양도하거나 대여할 수 없으며, 부정한 목적으로 사용 시 서비스 이용이 영구히 제한될 수 있습니다.</p>
+
+        <h2>제 5 조 (서비스 이용 시 주의사항)</h2>
+        <p>이용자는 서비스를 이용함에 있어 다음 각 호의 행위를 하여서는 안 됩니다.</p>
+        <ul>
+            <li>타인의 학번이나 정보를 도용하는 행위</li>
+            <li>급식 정보 등 서비스 데이터를 무단으로 수집하거나 상업적으로 이용하는 행위</li>
+            <li>기타 학교 규칙 및 공공질서를 해치는 행위</li>
+        </ul>
+        <p class="important">※ 위반 시 학교 규정에 따른 징계 및 서비스 이용 제한 조치가 취해질 수 있습니다.</p>
+
+        <footer>
+            <p>&copy; 2026 My JDMS. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script>
+        window.lucide.createIcons();
+        if (localStorage.getItem('dark-mode') === 'true' || 
+            (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.body.classList.add('dark-mode');
+        }
+    </script>
+</body>
+</html>

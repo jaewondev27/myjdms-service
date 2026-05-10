@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="theme-color" content="#f2f4f6">
+    <title>정보 - My JDMS</title>
+    <script>
+(function(){
+'use strict';
+var ICONS = {
+'chevron-left':'<path d="m15 18-6-6 6-6" />',
+'calendar':'<path d="M8 2v4" /> <path d="M16 2v4" /> <rect width="18" height="18" x="3" y="4" rx="2" /> <path d="M3 10h18" />',
+'utensils':'<path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2" /> <path d="M7 2v20" /> <path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7" />',
+'id-card':'<path d="M16 10h2" /> <path d="M16 14h2" /> <path d="M6.17 15a3 3 0 0 1 5.66 0" /> <circle cx="9" cy="11" r="2" /> <rect x="2" y="5" width="20" height="14" rx="2" />',
+'sparkles':'<path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z" /> <path d="M20 3v4" /> <path d="M22 5h-4" /> <path d="M4 17v2" /> <path d="M5 18H3" />',
+'graduation-cap':'<path d="M22 10v6M2 10l10-5 10 5-10 5z" /> <path d="M6 12v5c3 3 9 3 12 0v-5" />'
+};
+function mountInlineLucideIcons(root) {
+  root = root || document;
+  var nodes = root.querySelectorAll("[data-lucide]");
+  for (var i = 0; i < nodes.length; i++) {
+    var el = nodes[i];
+    var name = el.getAttribute("data-lucide");
+    if (!name || !ICONS[name]) continue;
+    var svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    svg.setAttribute("xmlns", "http://www.w3.org/2000/svg");
+    svg.setAttribute("width", "24");
+    svg.setAttribute("height", "24");
+    svg.setAttribute("viewBox", "0 0 24 24");
+    svg.setAttribute("fill", "none");
+    svg.setAttribute("stroke", "currentColor");
+    svg.setAttribute("stroke-width", "2");
+    svg.setAttribute("stroke-linecap", "round");
+    svg.setAttribute("stroke-linejoin", "round");
+    var extraClass = el.getAttribute("class");
+    if (extraClass) extraClass = extraClass.replace(/^\s+|\s+$/g, "");
+    svg.setAttribute("class", "lucide lucide-" + name + " lucide-inline" + (extraClass ? " " + extraClass : ""));
+    svg.innerHTML = ICONS[name];
+    if (el.id) svg.id = el.id;
+    if (el.hasAttribute("style")) svg.setAttribute("style", el.getAttribute("style"));
+    var w = el.getAttribute("width"); var h = el.getAttribute("height");
+    if (w) svg.setAttribute("width", w);
+    if (h) svg.setAttribute("height", h);
+    el.parentNode.replaceChild(svg, el);
+  }
+}
+window.mountInlineLucideIcons = mountInlineLucideIcons;
+window.lucide = window.lucide || {};
+window.lucide.createIcons = function () { mountInlineLucideIcons(document); };
+})();
+    </script>
+    <style>
+        :root {
+            --sat: env(safe-area-inset-top, 0px);
+            --sab: env(safe-area-inset-bottom, 0px);
+            --text-main: #1f2328;
+            --text-sub: #636c76;
+            --bg: #ffffff;
+            --border: #d0d7de;
+            --code-bg: rgba(175, 184, 193, 0.2);
+            --important-border: #8250df;
+            --important-bg: #f6f8fa;
+            --feature-color: #3182f6;
+        }
+
+        body.dark-mode {
+            --bg: #0d1117;
+            --text-main: #e6edf3;
+            --text-sub: #7d8590;
+            --border: #30363d;
+            --code-bg: rgba(110, 118, 129, 0.4);
+            --important-border: #bc8cff;
+            --important-bg: #161b22;
+        }
+
+        * {
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif;
+            background-color: var(--bg);
+            color: var(--text-main);
+            line-height: 1.5;
+            word-wrap: break-word;
+            padding-top: calc(var(--sat) + 20px);
+            padding-bottom: calc(var(--sab) + 40px);
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 32px;
+        }
+
+        @media (max-width: 767px) {
+            .container {
+                padding: 0 16px;
+            }
+        }
+
+        h1 {
+            font-size: 32px;
+            font-weight: 600;
+            margin-top: 0;
+            margin-bottom: 16px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        h2 {
+            font-size: 24px;
+            font-weight: 600;
+            margin-top: 24px;
+            margin-bottom: 16px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        p {
+            margin-top: 0;
+            margin-bottom: 16px;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .feature-item {
+            padding: 16px;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+
+        .feature-item:hover {
+            transform: translateY(-2px);
+            border-color: var(--feature-color);
+        }
+
+        .feature-icon {
+            color: var(--feature-color);
+        }
+
+        .feature-title {
+            font-weight: 700;
+            font-size: 16px;
+        }
+
+        .feature-desc {
+            font-size: 14px;
+            color: var(--text-sub);
+            line-height: 1.4;
+        }
+
+        .callout {
+            padding: 16px;
+            margin-bottom: 16px;
+            border-left: 4px solid var(--important-border);
+            background-color: var(--important-bg);
+            border-radius: 0 6px 6px 0;
+        }
+
+        .callout-label {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--important-border);
+            margin-bottom: 4px;
+            display: block;
+            text-transform: uppercase;
+        }
+
+        footer {
+            margin-top: 40px;
+            padding-top: 16px;
+            border-top: 1px solid var(--border);
+            font-size: 12px;
+            color: var(--text-sub);
+            text-align: center;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 24px;
+            color: var(--text-sub);
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-link">← 돌아가기</a>
+        
+        <h1>
+            <i data-lucide="graduation-cap" class="feature-icon"></i>
+            About My JDMS
+        </h1>
+        <p><strong>My JDMS</strong>는 학생들의 더 나은 학교 생활을 위해 제작된 통합 스마트 학교 앱입니다. 학교 생활에 꼭 필요한 핵심 기능들을 가장 빠르고 편리하게 제공합니다.</p>
+
+        <div class="callout">
+            <span class="callout-label">IMPORTANT</span>
+            <p>본 앱은 학생들의 편의를 위해 개발되었으며, 실시간 데이터를 바탕으로 정확한 학교 정보를 전달하는 것을 목표로 합니다.</p>
+        </div>
+
+        <h2>핵심 기능</h2>
+        <div class="feature-grid">
+            <div class="feature-item">
+                <i data-lucide="calendar" class="feature-icon" width="32" height="32"></i>
+                <div class="feature-title">스마트 시간표</div>
+                <div class="feature-desc">실시간으로 연동되는 학급 시간표를 한눈에 확인하세요.</div>
+            </div>
+            <div class="feature-item">
+                <i data-lucide="utensils" class="feature-icon" width="32" height="32"></i>
+                <div class="feature-title">오늘의 급식</div>
+                <div class="feature-desc">영양 정보와 함께 제공되는 식단을 매일 아침 확인할 수 있습니다.</div>
+            </div>
+            <div class="feature-item">
+                <i data-lucide="id-card" class="feature-icon" width="32" height="32"></i>
+                <div class="feature-title">디지털 학생증</div>
+                <div class="feature-desc">분실 걱정 없는 간편한 모바일 학생증 기능을 지원합니다.</div>
+            </div>
+        </div>
+
+        <h2>우리의 가치</h2>
+        <p>우리는 학교 생활의 모든 접점을 디지털로 연결하여 학생들에게 새로운 가치를 전달합니다.</p>
+        <ul>
+            <li><strong>편의성</strong>: 복잡한 절차 없이 필요한 정보에 즉시 접근</li>
+            <li><strong>정확성</strong>: 공식 학교 데이터를 바탕으로 한 신뢰할 수 있는 정보</li>
+            <li><strong>보안성</strong>: 학생증 등 민감한 개인정보의 안전한 관리</li>
+        </ul>
+
+        <footer>
+            <p>&copy; 2026 My JDMS. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script>
+        window.lucide.createIcons();
+        if (localStorage.getItem('dark-mode') === 'true' || 
+            (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.body.classList.add('dark-mode');
+        }
+    </script>
+</body>
+</html>
